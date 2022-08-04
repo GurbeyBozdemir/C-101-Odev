@@ -116,3 +116,116 @@ start:
 ---
 ### Soru 2:
 ---
+```
+using System.Collections;
+
+ArrayList buyukler = new ArrayList();
+ArrayList kucukler = new ArrayList();
+ArrayList sayilar = new ArrayList();
+
+Console.WriteLine("Aralarında boşluk bırakarak 20 adet sayı giriniz; ");
+while (true)
+{
+start:
+    try
+    {
+        int[] numbers = Console.ReadLine().Split(new Char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).Select(item => int.Parse(item)).ToArray();
+
+        for (int i = 0; i < numbers.Length; i++)
+        {
+            sayilar.Add(numbers[i]);
+        }
+        sayilar.Sort();
+        buyukler.Add(sayilar[19]);
+        buyukler.Add(sayilar[18]);
+        buyukler.Add(sayilar[17]);
+        kucukler.Add(sayilar[0]);
+        kucukler.Add(sayilar[1]);
+        kucukler.Add(sayilar[2]);
+
+
+
+
+
+        buyukler.Sort();
+        kucukler.Sort();
+        Array buyuklerA = buyukler.ToArray();
+        Array kucuklerA = kucukler.ToArray();
+
+
+
+        Console.WriteLine("En büyük sayılar: ");
+
+        foreach (int j in buyuklerA)
+        {
+            Console.WriteLine(j);
+        }
+        Console.WriteLine("En küçük sayılar: ");
+        foreach (int j in kucuklerA)
+        {
+            Console.WriteLine(j);
+        }
+
+        int buyuklerTop = 0;
+        int kucuklerTop = 0;
+
+
+
+        foreach (int x in buyuklerA)
+        {
+            buyuklerTop = buyuklerTop + x;
+        }
+        foreach (int x in kucuklerA)
+        {
+            kucuklerTop = kucuklerTop + x;
+        }
+        int buyukOrt = buyuklerTop / buyuklerA.Length;
+        int kucukOrt = kucuklerTop / kucuklerA.Length;
+        int ortTop = buyukOrt + kucukOrt;
+
+        Console.WriteLine("En büyük sayıların ortalaması: " + buyukOrt);
+        Console.WriteLine("En küçük sayıların ortlaması: " + kucukOrt);
+        Console.WriteLine("Ortalamaların toplamı: " + ortTop);
+
+        Console.ReadLine();
+        break;
+    }
+    catch (FormatException)
+    {
+        Console.WriteLine("Hatalı giriş yaptınız, 20 adet pozitif sayı giriniz: ");
+        goto start;
+    }
+}
+```
+---
+### Soru 3:
+---
+```
+using System.Collections;
+
+ArrayList sesli = new ArrayList();
+
+Console.WriteLine("Bir cümle giriniz: ");
+
+char[] girdi = (Console.ReadLine()).ToCharArray();
+
+foreach (char c in girdi)
+{
+    if (c == 'a' || c == 'e' || c == 'ı' || c == 'i' || c == 'o' || c == 'ö' || c == 'u' || c == 'ü')
+    {
+        if (sesli.Contains(c))
+        {
+            break;
+        }
+        
+        sesli.Add(c);
+    }
+}
+
+sesli.Sort();
+Console.WriteLine("Girilen cümledeki sesli harfler: ");
+foreach (char c in sesli)
+{
+    Console.WriteLine(c);
+}
+```
